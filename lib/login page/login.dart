@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:viacryptoapp_1/signUp.dart';
 
 class MyLoginPage extends StatefulWidget {
   const MyLoginPage({super.key});
@@ -8,16 +9,18 @@ class MyLoginPage extends StatefulWidget {
 }
 
 class _MyLoginPageState extends State<MyLoginPage> {
+  set _borderColor(Color? _borderColor) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 59, 66, 70),
+      backgroundColor: const Color.fromARGB(255, 59, 66, 70),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             _card(),
-            SizedBox(
+            const SizedBox(
               height: 48,
             ),
             _bottomSide(),
@@ -32,10 +35,10 @@ class _MyLoginPageState extends State<MyLoginPage> {
       height: 270,
       width: 400,
       child: Card(
-        margin: EdgeInsets.all(0.0),
+        margin: const EdgeInsets.all(0.0),
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(11.0)),
-        child: Image(
+        child: const Image(
           image: AssetImage(
               'assets/WhatsApp_Image_2023-04-25_at_2.59.57_PM-removebg-preview.png'),
         ),
@@ -57,7 +60,9 @@ class _MyLoginPageState extends State<MyLoginPage> {
                   fontWeight: FontWeight.w600),
             ),
           ),
-          SizedBox(height: 13,),
+          const SizedBox(
+            height: 13,
+          ),
           Padding(
             padding: const EdgeInsets.all(22.0),
             child: TextFormField(
@@ -73,60 +78,86 @@ class _MyLoginPageState extends State<MyLoginPage> {
                     color: Colors.white70,
                   ),
                   border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white,),
+                      borderSide: const BorderSide(
+                        color: Colors.white,
+                      ),
                       borderRadius: BorderRadius.circular(6.0))),
+              style: const TextStyle(
+                color: Colors.white,
+              ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(22.0),
-            child: TextFormField(
+            child: TextField(
               decoration: InputDecoration(
-                  label: const Text(
-                    'Password',
-                    style: TextStyle(color: Colors.white70),
-                  ),
-                  fillColor: Colors.white12,
-                  filled: true,
-                  prefixIcon: const Icon(
-                    Icons.lock,
-                    color: Colors.white70,
-                  ),
-                  border: OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.white,),
-                      borderRadius: BorderRadius.circular(6.0))),
+                label: const Text(
+                  'Password',
+                  style: TextStyle(color: Colors.white70),
+                ),
+                fillColor: Colors.white12,
+                filled: true,
+                prefixIcon: const Icon(
+                  Icons.lock,
+                  color: Colors.white70,
+                ),
+                border: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(255, 244, 203, 143),
+                    ),
+                    borderRadius: BorderRadius.circular(6.0)),
+              ),
+              style: const TextStyle(
+                color: Colors.white,
+              ),
             ),
           ),
           OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              minimumSize: Size(295, 50),
-              backgroundColor: Colors.orange[900]
-            ),
-            onPressed: null, child:const Text('Login',style: TextStyle(
-              color: Colors.white70,
-              fontSize: 18,
-            ),)),
-            const SizedBox(height: 9.0,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Do not have an account?',style: TextStyle(
+              style: OutlinedButton.styleFrom(
+                  minimumSize: const Size(295, 50),
+                  backgroundColor: Colors.orange[900]),
+              onPressed: null,
+              child: const Text(
+                'Login',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 18,
+                ),
+              )),
+          const SizedBox(
+            height: 9.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Do not have an account?',
+                style: TextStyle(
                   color: Colors.white70,
                   fontSize: 10,
-                ),),
-                const SizedBox(
-                  width: 5,
                 ),
-                GestureDetector(
-                  // onDoubleTap: () {
-                  //   showDialog(context: context, builder: (context) => ,)
-                  // },
-                  child: Text('Sign Up', style: TextStyle(
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return SignUp();
+                    },
+                  ));
+                },
+                child: Text(
+                  'Sign Up'.toUpperCase(),
+                  style: TextStyle(
                     color: Colors.orange[800],
                     fontSize: 10,
-                  ),),
-                )
-              ],
-            )
+                  ),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );
